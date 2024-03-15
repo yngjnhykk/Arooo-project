@@ -11,10 +11,6 @@ import { getContent } from '../../api/content';
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
-interface Props extends Content {
-  key: number;
-}
-
 function ContentItem() {
   // 파람스를 통해 productId 받아오기 -------------------------
 

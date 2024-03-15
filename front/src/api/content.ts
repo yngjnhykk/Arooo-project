@@ -21,3 +21,13 @@ export const getContent = async (contentId: number) => {
     console.log('fetch 실패 : ', err);
   }
 };
+
+// 좋아요
+export const like = async (contentId: number) => {
+  try {
+    const response = await axios.post(`/library/content/${contentId}/like`);
+    return response.data;
+  } catch (err) {
+    console.log('fetch 실패 : ', err);
+  }
+};

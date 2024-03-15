@@ -40,6 +40,21 @@ router.get('/:contentId', async (req, res) => {
 
 // 좋아요
 // GET | /library/content/:contentId/like
-router.post('/:contentId/like', (req, res) => {});
+router.post('/:contentId/like', async (req, res) => {
+  try {
+    const content = await Content.findOne({
+      where: { id: parseInt(req.params.contentId) },
+    });
+    if (!content) {
+      return res.status(404).send('없는 게시글이네요?');
+    }
+    content.likes += 1;
+    await content.save();
+
+    res.status(200).send({ likes: content.likes });
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 module.exports = router;
