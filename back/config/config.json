@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "qweasdzxc296~",
+    "database": "arooo-project",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "qweasdzxc296~",
+    "database": "arooo-project",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "qweasdzxc296~",
+    "database": "arooo-project",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
