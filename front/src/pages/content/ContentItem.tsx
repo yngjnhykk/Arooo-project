@@ -1,12 +1,14 @@
-import dayjs from 'dayjs';
 import styled from 'styled-components';
+import { useQuery } from 'react-query';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko'; // 한국어 가져오기
-import grayHeart from '../../assets/grayHeart.png';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
+
 import { getContent } from '../../api/content';
+import Heart from '../../components/Heart';
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -46,7 +48,7 @@ function ContentItem() {
         <div>{betweenDayTime}</div>
         <div>
           <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-            <GrayHeart src={grayHeart} />
+            <Heart id={data.id} />
             <div>{data.likes}</div>
           </div>
         </div>
@@ -75,11 +77,4 @@ const InfoWrap = styled.div`
   align-items: center;
   color: #737373;
   font-weight: 500;
-`;
-
-const GrayHeart = styled.img`
-  width: 20px;
-  &:hover {
-    scale: 1.2;
-  }
 `;

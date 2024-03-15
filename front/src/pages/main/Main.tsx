@@ -1,10 +1,9 @@
 import styled from 'styled-components';
+
 import Header from '../../components/Header';
 import ContentList from '../main/ContentList';
 
-type Props = {};
-
-function Main({}: Props) {
+function Main() {
   return (
     <Wrap>
       <Header />

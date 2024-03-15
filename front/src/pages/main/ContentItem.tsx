@@ -1,13 +1,12 @@
-import dayjs from 'dayjs';
 import styled from 'styled-components';
-import 'dayjs/locale/ko';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import 'dayjs/locale/ko'; // 한국어 가져오기
-import grayHeart from '../../assets/grayHeart.png';
-import redHeart from '../../assets/redHeart.png';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQueryClient } from 'react-query';
-import { like } from '../../api/content';
+
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/ko';
+import 'dayjs/locale/ko'; // 한국어 가져오기
+
+import Heart from '../../components/Heart';
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -22,21 +21,9 @@ function ContentItem(props: Props) {
   // 페이지 이동
   const navigate = useNavigate();
 
-  const queryClient = useQueryClient();
-
-  const likeMutation = useMutation(like, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['contents']);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-  });
-
   // 경과 시간
   const betweenDayTime = dayjs(props.createdAt).fromNow();
 
-  console.log(props.liked);
   return (
     <Wrap
       onClick={(event) => {
@@ -51,14 +38,7 @@ function ContentItem(props: Props) {
         <div>{betweenDayTime}</div>
         <div>
           <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-            <Heart
-              src={grayHeart}
-              onClick={(e) => {
-                e.stopPropagation();
-                likeMutation.mutate(props.id);
-                props.onClickLike();
-              }}
-            />
+            <Heart id={props.id} />
             <div>{props.likes}</div>
           </div>
         </div>
@@ -87,11 +67,4 @@ const InfoWrap = styled.div`
   align-items: center;
   color: #737373;
   font-weight: 500;
-`;
-
-const Heart = styled.img`
-  width: 20px;
-  &:hover {
-    scale: 1.2;
-  }
 `;

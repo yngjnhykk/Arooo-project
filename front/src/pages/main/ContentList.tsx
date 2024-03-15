@@ -1,9 +1,9 @@
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { getContents, like } from '../../api/content';
 import ContentItem from './ContentItem';
-import { useState } from 'react';
+import { getContents } from '../../api/content';
 
 type Props = {};
 
