@@ -24,7 +24,19 @@ router.get('/', async (req, res, next) => {
 
 // content 부분 조회
 // GET | /library/content/:contentId
-router.get('/:contentId', (req, res) => {});
+router.get('/:contentId', async (req, res) => {
+  try {
+    const content = await Content.findOne({
+      where: { id: parseInt(req.params.contentId) },
+    });
+    if (!content) {
+      return res.status(404).send('없는 게시글이네요?');
+    }
+    res.status(200).json(content);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 // 좋아요
 // GET | /library/content/:contentId/like

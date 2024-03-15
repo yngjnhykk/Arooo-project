@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Main from './pages/Main';
+import Main from './pages/main/Main';
 import Content from './pages/content/Content';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/content' element={<Content />} />
+        <Route path='/content/:id' element={<Content />} />
       </Routes>
     </Layout>
   );

@@ -11,3 +11,13 @@ export const getContents = async () => {
     console.log('fetch 실패 : ', err);
   }
 };
+
+// 게시글 한 개 조회
+export const getContent = async (contentId: number) => {
+  try {
+    const response = await axios.get(`/library/content/${contentId}`);
+    return response.data;
+  } catch (err) {
+    console.log('fetch 실패 : ', err);
+  }
+};

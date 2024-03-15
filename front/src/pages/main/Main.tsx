@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Header from '../components/Header';
-import ContentList from './content/ContentList';
+import Header from '../../components/Header';
+import ContentList from '../main/ContentList';
 
 type Props = {};
 

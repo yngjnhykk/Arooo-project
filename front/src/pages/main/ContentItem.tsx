@@ -4,9 +4,7 @@ import 'dayjs/locale/ko';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko'; // 한국어 가져오기
 import grayHeart from '../../assets/grayHeart.png';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
-import { getContent } from '../../api/content';
+import { useNavigate } from 'react-router-dom';
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -15,43 +13,28 @@ interface Props extends Content {
   key: number;
 }
 
-function ContentItem() {
-  // 파람스를 통해 productId 받아오기 -------------------------
-
-  const { id } = useParams();
-  const contentId = id ? parseInt(id) : 0;
-  console.log(contentId);
-
-  const { status, data } = useQuery<Content>(['content', contentId], () => getContent(contentId));
-
-  if (status === 'loading' || !data) {
-    return <div>loading...</div>;
-  }
-  if (status === 'error') {
-    return <div>error, please check console</div>;
-  }
-
+function ContentItem(props: Props) {
   // 페이지 이동
   const navigate = useNavigate();
 
   // 경과 시간
-  const betweenDayTime = dayjs(data.createdAt).fromNow();
+  const betweenDayTime = dayjs(props.createdAt).fromNow();
 
   return (
     <Wrap
       onClick={() => {
-        navigate(`/content/${data.id}`);
+        navigate(`/content/${props.id}`);
       }}
     >
       <div style={{ fontWeight: '600' }}>
-        {data.title} {data.id}
+        {props.title} {props.id}
       </div>
       <InfoWrap>
         <div>{betweenDayTime}</div>
         <div>
           <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
             <GrayHeart src={grayHeart} />
-            <div>{data.likes}</div>
+            <div>{props.likes}</div>
           </div>
         </div>
       </InfoWrap>
