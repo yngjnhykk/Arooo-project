@@ -28,16 +28,17 @@ function ContentItem(props: Props) {
         navigate(`/content/${props.data.id}`);
       }}
     >
-      <div style={{ fontWeight: '600' }}>
-        {props.data.title} {props.data.id}
-      </div>
+      <Title>
+        <div style={{ fontSize: 30, fontWeight: '600', borderBottom: '1px solid #f2f2f2', padding: '20px 0px' }}>
+          {props.data.title} {props.data.id}
+        </div>
+        <div style={{ height: 300 }}>{props.data.content}</div>
+      </Title>
       <InfoWrap>
-        <div>{betweenDayTime}</div>
-        <div>
-          <div style={{ display: 'flex', gap: 5, alignItems: 'center', width: 45 }}>
-            <Heart id={props.data.id} />
-            <div>{props.data.likes}</div>
-          </div>
+        <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <Heart id={props.data.id} />
+          <div style={{ color: 'black', fontWeight: '500', fontSize: 18, marginTop: 10 }}>좋아요 {props.data.likes}개</div>
+          <div>{betweenDayTime}</div>
         </div>
       </InfoWrap>
     </Wrap>
@@ -47,21 +48,25 @@ function ContentItem(props: Props) {
 export default ContentItem;
 
 const Wrap = styled.div`
-  width: 80%;
-  padding: 20px 30px;
-  background-color: #f2f2f2;
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  cursor: pointer;
+`;
+
+const Title = styled.div`
+  border-bottom: 1px solid #f2f2f2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
 `;
 
 const InfoWrap = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   color: #737373;
   font-weight: 500;
+  background-color: white;
 `;

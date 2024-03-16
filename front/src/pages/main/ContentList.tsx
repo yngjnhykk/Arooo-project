@@ -1,27 +1,52 @@
-import { useQuery } from 'react-query';
 import styled from 'styled-components';
-
 import ContentItem from './ContentItem';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useQuery } from 'react-query';
 import { getContents } from '../../api/content';
+import { useDispatch, useSelector } from 'react-redux';
 
-type Props = {};
+function ContentList() {
+  const [skip, setSkip] = useState(0);
+  const [contentData, setContentData] = useState<any[]>([]);
 
-function ContentList({}: Props) {
-  const { status, data } = useQuery('contents', getContents);
+  // const dispatch = useDispatch();
 
-  if (status === 'loading') {
+  // const { contents } = useSelector((state: any) => state.contents);
+
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  });
+
+  const { status, data, refetch } = useQuery(['contents', skip], () => getContents(skip * 10), {
+    refetchOnMount: false,
+    onSuccess: (data) => {
+      if (data.length === 0) {
+        return;
+      } else {
+        setContentData((contentData) => [...contentData, ...data]);
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (inView && data.length !== 0) {
+      setSkip(skip + 1);
+      refetch();
+    }
+  }, [inView]);
+
+  if (status === 'loading' || !data) {
     return <div>loading...</div>;
   }
   if (status === 'error') {
     return <div>error, please check console</div>;
   }
 
-  console.log(data);
   return (
     <Wrap>
-      {data.map((c: Content, i: number) => (
-        <ContentItem key={i} {...c} />
-      ))}
+      {data && contentData.map((c: any, i: number) => <ContentItem key={i} {...c} />)}
+      <div ref={ref}>loading</div>
     </Wrap>
   );
 }
