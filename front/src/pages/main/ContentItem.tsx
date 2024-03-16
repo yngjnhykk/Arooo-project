@@ -13,8 +13,6 @@ dayjs.locale('ko');
 
 interface Props extends Content {
   key: number;
-  liked: boolean;
-  onClickLike: () => void;
 }
 
 function ContentItem(props: Props) {
@@ -37,9 +35,9 @@ function ContentItem(props: Props) {
       <InfoWrap>
         <div>{betweenDayTime}</div>
         <div>
-          <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 5, alignItems: 'center', width: 30, justifyContent: 'space-between' }}>
             <Heart id={props.id} />
-            <div>{props.likes}</div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{props.likes}</div>
           </div>
         </div>
       </InfoWrap>

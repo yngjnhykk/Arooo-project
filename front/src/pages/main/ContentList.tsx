@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
@@ -8,12 +7,7 @@ import { getContents } from '../../api/content';
 type Props = {};
 
 function ContentList({}: Props) {
-  const [liked, setLiked] = useState(false);
   const { status, data } = useQuery('contents', getContents);
-
-  const onClickLike = () => {
-    setLiked(true);
-  };
 
   if (status === 'loading') {
     return <div>loading...</div>;
@@ -26,7 +20,7 @@ function ContentList({}: Props) {
   return (
     <Wrap>
       {data.map((c: Content, i: number) => (
-        <ContentItem key={i} {...c} onClickLike={onClickLike} liked={liked} />
+        <ContentItem key={i} {...c} />
       ))}
     </Wrap>
   );

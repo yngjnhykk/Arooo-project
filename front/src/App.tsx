@@ -29,9 +29,7 @@ const Layout = styled.div`
     /* width: 100%; */
   }
 
-  /* 모바일 사이즈에 대한 스타일 */
   @media only screen and (max-width: 480px) {
     width: 100%;
-    /* 원하는 모바일 사이즈에 대한 스타일을 여기에 작성합니다 */
   }
 `;
