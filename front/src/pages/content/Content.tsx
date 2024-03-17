@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import Header from '../../components/Header';
 import ContentItem from './ContentItem';
 import { getContent } from '../../api/content';
+import Title from '../../components/Title';
 
 function Content() {
   const { id } = useParams<{ id: string }>();
@@ -23,6 +24,8 @@ function Content() {
 
   return (
     <Wrap>
+      <Title keywords='Arooo' description='Arooo 상세페이지입니다.' title='Arooo | 상세페이지' />
+
       <Header />
       <ContentItem data={data} />
     </Wrap>
