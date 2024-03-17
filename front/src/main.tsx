@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
       <BrowserRouter>
-        <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'lightgray' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#FAFAFA' }}>
           <App />
         </div>
       </BrowserRouter>
