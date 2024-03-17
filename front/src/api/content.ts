@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Back_URL
-axios.defaults.baseURL = 'http://localhost:3066';
+axios.defaults.baseURL = import.meta.env.VITE_BACK_URL;
 
 // 게시글 전체 조회
 export const getContents = async (skip: number, limit: number) => {
