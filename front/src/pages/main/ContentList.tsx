@@ -2,39 +2,46 @@ import styled from 'styled-components';
 import ContentItem from './ContentItem';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useQuery } from 'react-query';
-import { getContents } from '../../api/content';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { infiniteContents } from '../../inifiniteQuery/contents';
 
 function ContentList() {
   const [skip, setSkip] = useState(0);
-  const [contentData, setContentData] = useState<any[]>([]);
 
-  // const dispatch = useDispatch();
-
-  // const { contents } = useSelector((state: any) => state.contents);
+  // inView 감지
 
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
 
-  const { status, data, refetch } = useQuery(['contents', skip], () => getContents(skip * 10), {
-    refetchOnMount: false,
-    onSuccess: (data) => {
-      if (data.length === 0) {
-        return;
-      } else {
-        setContentData((contentData) => [...contentData, ...data]);
-      }
-    },
-  });
+  // 페이지별 데이터 요청
+
+  const { data, status, fetchNextPage } = infiniteContents(skip, 10);
+
+  // inView 감지
 
   useEffect(() => {
-    if (inView && data.length !== 0) {
+    if (inView && data?.pages[0].length !== 0) {
       setSkip(skip + 1);
-      refetch();
+      fetchNextPage();
     }
   }, [inView]);
+
+  // 2차원 -> 1차원 배열 전환
+  const contents = (): Content[] | undefined => {
+    if (data?.pages) {
+      const copyData: Content[][] = [...data?.pages];
+      if (copyData[copyData.length - 1] === undefined) {
+        copyData.pop();
+      }
+      const result = copyData.reduce(function (acc, cur) {
+        return acc.concat(cur);
+      });
+      return result;
+    }
+  };
+
+  console.log(contents());
 
   if (status === 'loading' || !data) {
     return <div>loading...</div>;
@@ -45,8 +52,8 @@ function ContentList() {
 
   return (
     <Wrap>
-      {data && contentData.map((c: any, i: number) => <ContentItem key={i} {...c} />)}
-      <div ref={ref}>loading</div>
+      {data && contents()?.map((c: any, i: number) => <ContentItem key={i} {...c} />)}
+      <div ref={ref} />
     </Wrap>
   );
 }
@@ -60,4 +67,5 @@ const Wrap = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-top: 20px;
 `;

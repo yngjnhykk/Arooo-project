@@ -29,11 +29,11 @@ function ContentItem(props: Props) {
       }}
     >
       <Title>
-        <div style={{ fontSize: 30, fontWeight: '600', borderBottom: '1px solid #f2f2f2', padding: '20px 0px' }}>
+        <div style={{ fontSize: 30, fontWeight: '600', padding: '20px 0px' }}>
           {props.data.title} {props.data.id}
         </div>
-        <div style={{ height: 300 }}>{props.data.content}</div>
       </Title>
+      <div style={{ height: 300, padding: 20, borderBottom: '1px solid #f2f2f2' }}>{props.data.content}</div>
       <InfoWrap>
         <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
           <Heart id={props.data.id} />

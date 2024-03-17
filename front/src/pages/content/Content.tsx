@@ -34,7 +34,7 @@ export default Content;
 
 const Wrap = styled.div`
   width: 100%;
-  padding: 30px 0px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

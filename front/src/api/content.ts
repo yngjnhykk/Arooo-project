@@ -3,9 +3,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3066';
 
 // 게시글 전체 조회
-export const getContents = async (skip: number) => {
+export const getContents = async (skip: number, limit: number) => {
   try {
-    const response = await axios.get(`/library/content?skip=${skip}&limit=10`);
+    const response = await axios.get(`/library/content?skip=${skip}&limit=${limit}`);
     return response.data;
   } catch (err) {
     console.log('fetch 실패 : ', err);
