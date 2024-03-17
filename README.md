@@ -14,6 +14,7 @@
 - 목록 아이템 조회
 - 콘텐츠 상세 페이지
 - 좋아요 기능(+ 업데이트 동기화)
+
 https://github.com/yngjnhykk/Arooo-project/assets/143480840/43db476c-9b75-4657-9a82-27c5bc874f71
 
 
