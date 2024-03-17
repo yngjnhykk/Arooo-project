@@ -1,3 +1,5 @@
+
+https://github.com/yngjnhykk/Arooo-project/assets/143480840/7175fefb-b457-44f7-ad45-d68bef80dd88
 # [아루] WEB 프론트엔드 개발자(Lv1) 과제
 
 ### 요청 내용
@@ -13,8 +15,9 @@
 ### 시연 영상
 - 목록 아이템 조회
 - 콘텐츠 상세 페이지
-- 좋아요 기능(+ 업데이트 동기화)  
-![Arooo _ 목록 - Chrome 2024-03-17 22-18-11](https://github.com/yngjnhykk/Arooo-project/assets/143480840/745a42de-5d97-4ac4-a626-bbc031dedf38)
+- 좋아요 기능(+ 업데이트 동기화)
+https://github.com/yngjnhykk/Arooo-project/assets/143480840/43db476c-9b75-4657-9a82-27c5bc874f71
+
 
 
 ### 사용 방법
