@@ -1,5 +1,3 @@
-
-https://github.com/yngjnhykk/Arooo-project/assets/143480840/7175fefb-b457-44f7-ad45-d68bef80dd88
 # [아루] WEB 프론트엔드 개발자(Lv1) 과제
 
 ### 요청 내용
