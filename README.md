@@ -13,9 +13,8 @@
 ### 시연 영상
 - 목록 아이템 조회
 - 콘텐츠 상세 페이지
-- 좋아요 기능(+ 업데이트 동기화)
-- 
-![Arooo _ 목록 - Chrome 2024-03-17 22-18-11](https://github.com/yngjnhykk/Arooo-project/assets/143480840/e7792903-4542-4802-857c-9a97e4bc18b1)
+- 좋아요 기능(+ 업데이트 동기화)  
+![Arooo _ 목록 - Chrome 2024-03-17 22-18-11](https://github.com/yngjnhykk/Arooo-project/assets/143480840/745a42de-5d97-4ac4-a626-bbc031dedf38)
 
 
 ### 사용 방법
