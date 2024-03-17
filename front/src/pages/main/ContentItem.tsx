@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
-import 'dayjs/locale/ko'; // 한국어 가져오기
 
 import Heart from '../../components/Heart';
 
-dayjs.extend(relativeTime);
-dayjs.locale('ko');
+dayjs.extend(relativeTime); // 상대적인 시간 처리(00분 전, 어제)
+dayjs.locale('ko'); // 한국어 설정
 
 interface Props extends Content {
   key: number;
@@ -20,7 +19,7 @@ function ContentItem(props: Props) {
   const navigate = useNavigate();
 
   // 경과 시간
-  const betweenDayTime = dayjs(props.createdAt).fromNow();
+  const betweenDayTime: string = dayjs(props.createdAt).fromNow();
 
   return (
     <Wrap

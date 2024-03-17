@@ -1,19 +1,18 @@
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
 import Header from '../../components/Header';
 import ContentItem from './ContentItem';
-import { useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
 import { getContent } from '../../api/content';
 
 function Content() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
+
+  // 타입 좁히기
   const contentId = id ? parseInt(id) : 0;
 
-  const { status, data } = useQuery<Content>(['content', contentId], () => getContent(contentId), {});
-
-  console.log('Status:', status);
-  // console.log('Data:', data);
+  const { status, data }: { status: string; data?: Content } = useQuery<Content>(['content', contentId], () => getContent(contentId), {});
 
   if (status === 'loading' || !data) {
     return <div>loading...</div>;

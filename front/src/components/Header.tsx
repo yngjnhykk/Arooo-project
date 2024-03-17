@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 
-type Props = {};
+import logo from '../assets/logo.png';
 
-function Header({}: Props) {
+function Header() {
   const navigate = useNavigate();
 
   return (

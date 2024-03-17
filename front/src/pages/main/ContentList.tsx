@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import ContentItem from './ContentItem';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import styled from 'styled-components';
 
+import ContentItem from './ContentItem';
 import { infiniteContents } from '../../inifiniteQuery/contents';
 
 function ContentList() {
@@ -18,7 +18,7 @@ function ContentList() {
 
   const { data, status, fetchNextPage } = infiniteContents(skip, 10);
 
-  // inView 감지
+  // inView 감지 후, 다음 페이지 데이터 조회
 
   useEffect(() => {
     if (inView && data?.pages[0].length !== 0) {
@@ -40,8 +40,6 @@ function ContentList() {
       return result;
     }
   };
-
-  console.log(contents());
 
   if (status === 'loading' || !data) {
     return <div>loading...</div>;

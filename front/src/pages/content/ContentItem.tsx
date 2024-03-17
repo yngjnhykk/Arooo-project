@@ -8,8 +8,8 @@ import 'dayjs/locale/ko'; // 한국어 가져오기
 
 import Heart from '../../components/Heart';
 
-dayjs.extend(relativeTime);
-dayjs.locale('ko');
+dayjs.extend(relativeTime); // 상대적인 시간 처리(00분 전, 어제)
+dayjs.locale('ko'); // 한국어 설정
 
 interface Props {
   data: Content;

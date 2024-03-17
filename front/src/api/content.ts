@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Back_URL
 axios.defaults.baseURL = 'http://localhost:3066';
 
 // 게시글 전체 조회
