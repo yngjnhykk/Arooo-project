@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
@@ -6,8 +6,6 @@ import ContentItem from './ContentItem';
 import { infiniteContents } from '../../inifiniteQuery/contents';
 
 function ContentList() {
-  const [skip, setSkip] = useState(0);
-
   // inView 감지
 
   const { ref, inView } = useInView({
@@ -16,13 +14,14 @@ function ContentList() {
 
   // 페이지별 데이터 요청
 
-  const { data, status, fetchNextPage } = infiniteContents(skip, 10);
+  const { data, status, fetchNextPage } = infiniteContents(0, 10);
 
   // inView 감지 후, 다음 페이지 데이터 조회
 
+  console.log(data?.pages);
+
   useEffect(() => {
     if (inView && data?.pages[0].length !== 0) {
-      setSkip(skip + 1);
       fetchNextPage();
     }
   }, [inView]);

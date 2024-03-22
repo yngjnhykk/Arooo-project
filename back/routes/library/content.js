@@ -8,6 +8,8 @@ const router = express.Router();
 // GET | /library/content
 router.get('/', async (req, res, next) => {
   try {
+    console.log('skip: ', req.query.skip);
+
     const skip = parseInt(req.query.skip) || 0;
     const limit = parseInt(req.query.limit) || 10;
 
