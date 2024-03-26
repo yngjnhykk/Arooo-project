@@ -25,7 +25,6 @@ function Content() {
   return (
     <Wrap>
       <Title keywords='Arooo' description='Arooo 상세페이지입니다.' title='Arooo | 상세페이지' />
-
       <Header />
       <ContentItem data={data} />
     </Wrap>
